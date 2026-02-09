@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { DayOfWeek } from '../types';
+import { DayOfWeek } from '../types.ts';
 import { X, Sparkles, Loader2 } from 'lucide-react';
-import { generateTasksWithAI } from '../services/geminiService';
+import { generateTasksWithAI } from '../services/geminiService.ts';
 
 interface NewTaskModalProps {
   isOpen: boolean;
@@ -24,7 +24,6 @@ export const NewTaskModal: React.FC<NewTaskModalProps> = ({
   const [isGenerating, setIsGenerating] = useState(false);
   const [aiPrompt, setAiPrompt] = useState('');
 
-  // Update selected day if initialDay changes when opening
   React.useEffect(() => {
     if (isOpen) {
       setSelectedDay(initialDay);

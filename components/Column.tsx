@@ -1,6 +1,6 @@
 import React from 'react';
-import { DayOfWeek, Task, COLUMN_COLORS } from '../types';
-import { TaskCard } from './TaskCard';
+import { DayOfWeek, Task, COLUMN_COLORS } from '../types.ts';
+import { TaskCard } from './TaskCard.tsx';
 import { Plus } from 'lucide-react';
 
 interface ColumnProps {
@@ -52,7 +52,6 @@ export const Column: React.FC<ColumnProps> = ({
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      {/* Header */}
       <div className={`p-3 rounded-t-xl border-b flex justify-between items-center ${COLUMN_COLORS[day]}`}>
         <h2 className="font-bold text-sm uppercase tracking-wider">{day}</h2>
         <span className="text-xs font-semibold bg-white/50 px-2 py-0.5 rounded-full">
@@ -60,7 +59,6 @@ export const Column: React.FC<ColumnProps> = ({
         </span>
       </div>
 
-      {/* Drop Zone / Task List */}
       <div className="flex-1 p-2 overflow-y-auto overflow-x-hidden min-h-[150px]">
         {tasks.map((task) => (
           <TaskCard 
@@ -78,7 +76,6 @@ export const Column: React.FC<ColumnProps> = ({
         )}
       </div>
 
-      {/* Add Button */}
       <div className="p-2 border-t border-slate-100">
         <button
           onClick={() => onAddTask(day)}

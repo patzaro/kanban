@@ -1,7 +1,6 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { Task, DayOfWeek } from "../types";
+import { Task, DayOfWeek } from "../types.ts";
 
-// Helper to generate IDs
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
 export const generateTasksWithAI = async (goal: string): Promise<Task[]> => {
@@ -42,14 +41,12 @@ export const generateTasksWithAI = async (goal: string): Promise<Task[]> => {
 
     const generatedData = JSON.parse(response.text || "[]");
 
-    // Map response to our internal Task structure
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return generatedData.map((item: any) => ({
       id: generateId(),
       content: item.content,
       day: item.day as DayOfWeek,
       createdAt: Date.now(),
-      color: 'bg-white' // Default color
+      color: 'bg-white'
     }));
 
   } catch (error) {

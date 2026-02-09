@@ -1,5 +1,5 @@
 import React from 'react';
-import { Task } from '../types';
+import { Task } from '../types.ts';
 import { Trash2, GripVertical } from 'lucide-react';
 
 interface TaskCardProps {
